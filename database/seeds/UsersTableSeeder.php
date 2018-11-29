@@ -12,6 +12,13 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class, 10)->create();
+        User::create([
+            'name' => 'Dose Master',
+            'email' => 'master@edosecerta.com',
+            'password' => 'secret',
+            'crmv' => '0000',
+            'remember_token' => 'KjF6hUIZ2d'
+        ]);
+        factory(User::class, 9)->create();
     }
 }
