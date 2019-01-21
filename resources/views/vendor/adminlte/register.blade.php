@@ -28,6 +28,16 @@
                         </span>
                     @endif
                 </div>
+                <div class="form-group has-feedback {{ $errors->has('crmv') ? 'has-error' : '' }}">
+                    <input type="text" name="crmv" class="form-control" value="{{ old('crmv') }}"
+                           placeholder="{{ trans('CRMV') }}">
+                    <span class="glyphicon glyphicon-leaf form-control-feedback"></span>
+                    @if ($errors->has('crmv'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('CRMV') }}</strong>
+                        </span>
+                    @endif
+                </div>
                 <div class="form-group has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
                     <input type="email" name="email" class="form-control" value="{{ old('email') }}"
                            placeholder="{{ trans('adminlte::adminlte.email') }}">
