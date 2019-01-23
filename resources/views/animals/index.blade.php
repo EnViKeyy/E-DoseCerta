@@ -1,20 +1,20 @@
 @extends('adminlte::page')
 
-@section('title', 'Assistidos')
+@section('title', 'Animals')
 
 @section('css')
 @endsection
 
 @section('content_header')
     @include('helpers.flash-message')
-    <h1>Assistidos</h1>
+    <h1>Animais</h1>
 @stop
 
 @section('content')
     <div class="box">
         <div class="box-header with-border">
             <div class="pull-right">
-                <a class="btn btn-xs btn-primary" href="{{ route('assisteds.create') }}">Cadastrar assistido</a>
+                <a class="btn btn-xs btn-primary" href="{{ route('animals.create') }}">Cadastrar Animal</a>
             </div>
         </div>
         <!-- /.box-header -->
@@ -24,28 +24,23 @@
                     <tr>
                         <th class="text-center">#</th>
                         <th class="text-center">Nome</th>
-                        <th class="text-center">CPF</th>
                         <th class="text-center">RG</th>
-                        <th class="text-center">Email</th>
-                        <th class="text-center">Ação</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($assisteds as $assisted)
+                    @foreach ($animals as $animal)
                         <tr class="text-center">
-                            <td>{{ $assisted->id }}</td>
-                            <td>{{ $assisted->name }}</td>
-                            <td>{{ $assisted->cpf }}</td>
-                            <td>{{ $assisted->rg }}</td>
-                            <td>{{ $assisted->email }}</td>
+                            <td>{{ $animal->id }}</td>
+                            <td>{{ $animal->name }}</td>
+                            <td>{{ $animal->rg }}</td>
                             <td>
-                                <a class="btn btn-xs btn-primary" href="{{ route('assisteds.show', $assisted->id) }}">
-                                    Visualizar
+                                <a class="btn btn-xs btn-primary" href="{{ route('animals.show', $animal->id) }}">
+                                    Visualizar Dosagens
                                 </a>
-                                <a class="btn btn-xs btn-warning" href="{{ route('assisteds.edit', $assisted->id) }}">
+                                <a class="btn btn-xs btn-warning" href="{{ route('animals.edit', $animal->id) }}">
                                     Editar
                                 </a>
-                                <a class="btn btn-xs btn-danger assisted-destroy" data-id="{{ $assisted->id }}">
+                                <a class="btn btn-xs btn-danger assisted-destroy" data-id="{{ $animal->id }}">
                                     Excluir
                                 </a>
                             </td>
@@ -56,7 +51,7 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer clearfix text-center">
-            {{ $assisteds->links() }}
+            {{ $animals->links() }}
         </div>
     </div>
 @stop
@@ -65,9 +60,9 @@
     <script src="//unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
         $('.assisted-destroy').on('click', function () {
-            var assistedId = $(this).data('id');
+            var animalId = $(this).data('id');
 
-            swal("Confirma a exclusão do assistido?", {
+            swal("Tem certeza que deseja excluir esse animal?", {
                 buttons: {
                     cancel: "Cancelar",
                     catch: {
@@ -80,14 +75,14 @@
                 switch (value) {
                     case "confirm":
                         $.ajax({
-                            url: '{{ route('assisteds.destroy', '_user') }}'.replace('_user', assistedId),
+                            url: '{{ route('animals.destroy', '_animal') }}'.replace('_animal', animalId),
                             method: 'DELETE',
                             success: function (xhr) {
-                                swal("Sucesso!", "Assistido deletado", "success");
+                                swal("Sucesso!", "Animal deletado", "success");
                                 window.location.reload();
                             },
                             error: function (xhr) {
-                                swal("Falha!", "Assistido não pôde ser excluído", "error");
+                                swal("Falha!", "Animal não pôde ser excluído", "error");
                             }
                         });
                         break;
