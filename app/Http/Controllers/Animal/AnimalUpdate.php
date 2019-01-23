@@ -1,32 +1,32 @@
 <?php
 
-namespace App\Http\Controllers\Assisted;
+namespace App\Http\Controllers\Animal;
 
 use App\Http\Controllers\Controller;
-use App\Models\Assisted;
+use App\Models\Animal;
 use Illuminate\Http\Request;
 
-class AssistedUpdate extends Controller
+class AnimalUpdate extends Controller
 {
     /**
      * @param Request $request
-     * @param Assisted $assisted
+     * @param Animal $animal
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function __invoke(Request $request, Assisted $assisted)
+    public function __invoke(Request $request, Animal $animal)
     {
-        $assisted->update($request->all());
+        $animal->update($request->all());
 
         try {
-            $assisted->save();
+            $animal->save();
 
             return redirect()
-                ->route('assisteds.index')
-                ->with('alert-success', 'Assistido atualizado com sucesso!');
+                ->route('animals.index')
+                ->with('alert-success', 'Dados do animal atualizado com sucesso!');
         } catch (\Exception $e) {
             return redirect()
                 ->back()
-                ->with('alert-danger', 'Falha na atualização do assistido!');
+                ->with('alert-danger', 'Falha na atualização dos dados do Animal!');
         }
     }
 }
