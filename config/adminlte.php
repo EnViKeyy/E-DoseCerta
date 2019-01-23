@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 2',
+    'title' => 'e-DoseCerta',
 
     'title_prefix' => '',
 
@@ -30,9 +30,9 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>e</b>-DoseCerta',
 
-    'logo_mini' => '<b>A</b>LT',
+    'logo_mini' => '<b>e</b>-DC',
 
     /*
     |--------------------------------------------------------------------------
@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'skin' => 'blue',
+    'skin' => 'green',
 
     /*
     |--------------------------------------------------------------------------
@@ -108,80 +108,69 @@ return [
     */
 
     'menu' => [
-        'MAIN NAVIGATION',
+        'MENU',
         [
-            'text' => 'Blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'text'        => 'home',
+            'url'         => 'home',
+            'icon'        => 'home',
         ],
         [
-            'text'        => 'Pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
-        'ACCOUNT SETTINGS',
-        [
-            'text' => 'Profile',
-            'url'  => 'admin/settings',
-            'icon' => 'user',
-        ],
-        [
-            'text' => 'Change Password',
-            'url'  => 'admin/settings',
-            'icon' => 'lock',
-        ],
-        [
-            'text'    => 'Multilevel',
-            'icon'    => 'share',
+            'text'    => 'Dosagens',
+            'icon'    => 'eyedropper',
             'submenu' => [
                 [
-                    'text' => 'Level One',
+                    'text' => 'Nova Dosagem',
                     'url'  => '#',
                 ],
                 [
-                    'text'    => 'Level One',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'Level Two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'Level Two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'Level Three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'Level Three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'Level One',
+                    'text' => 'Histórico de dosagens',
                     'url'  => '#',
                 ],
             ],
         ],
-        'LABELS',
         [
-            'text'       => 'Important',
-            'icon_color' => 'red',
+            'text'    => 'Animais',
+            'icon'    => 'bug',
+            'submenu' => [
+                [
+                    'text' => 'Cadastrar',
+                    'route'  => 'animals.create',
+                ],
+                [
+                    'text' => 'Visualizar',
+                    'route'  => 'animals.index',
+                    'active' => ['animals'],
+                ],
+            ],
         ],
         [
-            'text'       => 'Warning',
-            'icon_color' => 'yellow',
+            'text'    => 'Farmacos',
+            'icon'    => 'medkit',
+            'submenu' => [
+                [
+                    'text' => 'Cadastrar',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Visualizar',
+                    'url'  => '#',
+                ],
+            ],
         ],
         [
-            'text'       => 'Information',
-            'icon_color' => 'aqua',
+            'text'    => 'Espécies',
+            'icon'    => 'paw',
+            'submenu' => [
+                [
+                    'text' => 'Cadastrar',
+                    'route'  => 'animals.create',
+                ],
+                [
+                    'text' => 'Visualizar',
+                    'route'  => 'animals.index',
+                    'active' => ['animals'],
+                ],
+            ],
         ],
     ],
 
