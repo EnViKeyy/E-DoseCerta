@@ -1,22 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Animal;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use App\Http\Resources\User as UserResource;
+use App\Models\Animal;
+use App\Http\Resources\Animal as AnimalResource;
 
-class UserDestroy extends Controller
+class AnimalDestroy extends Controller
 {
     /**
-     * @param User $user
-     * @return UserResource
+     * @param Animal $animal
+     * @return AnimalResource
      * @throws \Exception
      */
-    public function __invoke(User $user)
+    public function __invoke(Animal $animal)
     {
-        $user->delete();
+        $animal->delete();
 
-        return new UserResource($user);
+        return new AnimalResource($animal);
     }
 }
