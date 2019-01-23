@@ -1,23 +1,23 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Animal;
 
-use App\Forms\User\UserForm;
+use App\Forms\Animal\AnimalForm;
 use App\Http\Controllers\Controller;
 
-class UserCreate extends Controller
+class AnimalCreate extends Controller
 {
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function __invoke()
     {
-        $form = $this->formBuilder->create(UserForm::class, [
-            'url' => route('users.store'),
+        $form = $this->formBuilder->create(AnimalForm::class, [
+            'url' => route('animals.store'),
             'method' => 'POST'
         ]);
 
-        return view('users.create', [
+        return view('animals.create', [
             'form' => $form
         ]);
     }

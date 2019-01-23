@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Animal;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Animal;
 use Illuminate\Http\Request;
 
-class UserStore extends Controller
+class AnimalStore extends Controller
 {
     /**
      * @param Request $request
@@ -15,18 +15,18 @@ class UserStore extends Controller
      */
     public function __invoke(Request $request)
     {
-        $user = new User($request->all());
+        $animal = new Animal($request->all());
 
         try {
-            $user->save();
+            $animal->save();
 
             return redirect()
-                ->route('users.index')
-                ->with('alert-success', 'Funcionário cadastrado com sucesso!');
+                ->route('animals.index')
+                ->with('alert-success', 'Animal cadastrado com sucesso!');
         } catch (\Exception $e) {
             return redirect()
                 ->back()
-                ->with('alert-danger', 'Falha no cadastro do funcionário!' . $e->getMessage());
+                ->with('alert-danger', 'Falha no cadastro do Animal!' . $e->getMessage());
         }
     }
 }
