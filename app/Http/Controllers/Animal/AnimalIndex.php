@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Animal;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Animal;
 use Illuminate\Http\Request;
 
-class UserIndex extends Controller
+class AnimalIndex extends Controller
 {
     private $itemsPerPage = 10;
 
@@ -17,10 +17,10 @@ class UserIndex extends Controller
     {
         $perPage = $request->query->get('perPage', $this->itemsPerPage);
 
-        $users = User::paginate($perPage);
+        $animais = Animal::paginate($perPage);
 
-        return view('users.index', [
-            'users' => $users
+        return view('animals.index', [
+            'animals' => $animais
         ]);
     }
 }
