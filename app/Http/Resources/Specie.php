@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Animal extends JsonResource
+class Specie extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,8 +16,7 @@ class Animal extends JsonResource
     {
         // return parent::toArray($request);
         return [
-            'name' => $this->name,
-            'rg' => $this->rg
+            'name' => $this->name
         ];
     }
 
