@@ -1,26 +1,26 @@
 <?php
 
-namespace App\Http\Controllers\Animal;
+namespace App\Http\Controllers\Specie;
 
-use App\Forms\Animal\AnimalForm;
+use App\Forms\Specie\SpecieForm;
 use App\Http\Controllers\Controller;
-use App\Models\Animal;
+use App\Models\Specie;
 
-class AnimalEdit extends Controller
+class SpecieEdit extends Controller
 {
     /**
-     * @param Animal $animal
+     * @param Specie $specie
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function __invoke(Animal $animal)
+    public function __invoke(Specie $specie)
     {
-        $form = $this->formBuilder->create(AnimalForm::class, [
-            'url' => route('animals.update', $animal->id),
+        $form = $this->formBuilder->create(SpecieForm::class, [
+            'url' => route('species.update', $specie->id),
             'method' => 'PUT',
-            'model' => $animal
+            'model' => $specie
         ]);
 
-        return view('animals.edit', [
+        return view('species.edit', [
             'form' => $form
         ]);
     }

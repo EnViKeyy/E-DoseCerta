@@ -1,22 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\Animal;
+namespace App\Http\Controllers\Specie;
 
 use App\Http\Controllers\Controller;
-use App\Models\Animal;
-use App\Http\Resources\Animal as AnimalResource;
+use App\Models\Specie;
+use App\Http\Resources\Specie as SpecieResource;
 
-class AnimalDestroy extends Controller
+class SpecieDestroy extends Controller
 {
     /**
-     * @param Animal $animal
-     * @return AnimalResource
+     * @param Specie $specie
+     * @return SpecieResource
      * @throws \Exception
      */
-    public function __invoke(Animal $animal)
+    public function __invoke(Specie $specie)
     {
-        $animal->delete();
+        $specie->delete();
 
-        return new AnimalResource($animal);
+        return new SpecieResource($specie);
     }
 }

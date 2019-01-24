@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Animal;
+namespace App\Http\Controllers\Specie;
 
 use App\Http\Controllers\Controller;
-use App\Models\Animal;
+use App\Models\Specie;
 use Illuminate\Http\Request;
 
-class AnimalIndex extends Controller
+class SpecieIndex extends Controller
 {
     private $itemsPerPage = 10;
 
@@ -17,10 +17,10 @@ class AnimalIndex extends Controller
     {
         $perPage = $request->query->get('perPage', $this->itemsPerPage);
 
-        $animais = Animal::paginate($perPage);
+        $species = Specie::paginate($perPage);
 
-        return view('animals.index', [
-            'animals' => $animais
+        return view('species.index', [
+            'species' => $species
         ]);
     }
 }

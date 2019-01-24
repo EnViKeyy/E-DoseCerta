@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Animal;
+namespace App\Http\Controllers\Specie;
 
 use App\Http\Controllers\Controller;
-use App\Models\Animal;
-use App\Http\Resources\Animal as AnimalResource;
+use App\Models\Specie;
+use App\Http\Resources\Specie as SpecieResource;
 
-class AnimalList extends Controller
+class SpecieList extends Controller
 {
     private $itemsPerPage = 10;
 
@@ -15,8 +15,8 @@ class AnimalList extends Controller
      */
     public function __invoke()
     {
-        $users = Animal::paginate($this->itemsPerPage);
+        $species = Specie::paginate($this->itemsPerPage);
 
-        return AnimalResource::collection($users);
+        return SpecieResource::collection($species);
     }
 }

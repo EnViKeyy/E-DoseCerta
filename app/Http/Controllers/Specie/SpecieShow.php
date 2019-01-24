@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Animal;
+namespace App\Http\Controllers\Specie;
 
 use App\Http\Controllers\Controller;
-use App\Models\Animal;
-use App\Http\Resources\Animal as AnimalResource;
-use Illuminate\Http\JsonResponse;
+use App\Models\Specie;
 
-class AnimalShow extends Controller
+class SpecieShow extends Controller
 {
     /**
-     * @param Animal $animal
-     * @return AnimalResource|JsonResponse
+     * @param Specie $specie
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function __invoke(Animal $animal)
+    public function __invoke(Specie $specie)
     {
-        return new AnimalResource($animal);
+        return view('species.show', [
+            'specie' => $specie
+        ]);
     }
 }

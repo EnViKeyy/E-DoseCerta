@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Animal;
+namespace App\Http\Controllers\Specie;
 
 use App\Http\Controllers\Controller;
-use App\Models\Animal;
+use App\Models\Specie;
 use Illuminate\Http\Request;
 
-class AnimalStore extends Controller
+class SpecieStore extends Controller
 {
     /**
      * @param Request $request
@@ -15,18 +15,18 @@ class AnimalStore extends Controller
      */
     public function __invoke(Request $request)
     {
-        $animal = new Animal($request->all());
+        $specie = new Specie($request->all());
 
         try {
-            $animal->save();
+            $specie->save();
 
             return redirect()
-                ->route('animals.index')
-                ->with('alert-success', 'Animal cadastrado com sucesso!');
+                ->route('species.index')
+                ->with('alert-success', 'Espécie cadastrada com sucesso!');
         } catch (\Exception $e) {
             return redirect()
                 ->back()
-                ->with('alert-danger', 'Falha no cadastro do Animal!' . $e->getMessage());
+                ->with('alert-danger', 'Falha no cadastro da espécie!' . $e->getMessage());
         }
     }
 }
