@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Animal;
 use App\Http\Controllers\Controller;
 use App\Models\Animal;
 use App\Http\Resources\Animal as AnimalResource;
+use App\Models\Specie;
 use Illuminate\Http\JsonResponse;
 
 class AnimalShow extends Controller
@@ -15,6 +16,10 @@ class AnimalShow extends Controller
      */
     public function __invoke(Animal $animal)
     {
-        return new AnimalResource($animal);
+        $animal->specie = Specie::findOrFail($animal->specie);
+
+        return view('animals.show', [
+            'animal' => $animal
+        ]);
     }
 }

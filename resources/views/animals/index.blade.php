@@ -24,6 +24,7 @@
                     <tr>
                         <th class="text-center">#</th>
                         <th class="text-center">Nome</th>
+                        <th class="text-center">Espécie</th>
                         <th class="text-center">RG</th>
                     </tr>
                 </thead>
@@ -32,6 +33,7 @@
                         <tr class="text-center">
                             <td>{{ $animal->id }}</td>
                             <td>{{ $animal->name }}</td>
+                            <td>{{ $animal->specie->name }}</td>
                             <td>{{ $animal->rg }}</td>
                             <td>
                                 <a class="btn btn-xs btn-primary" href="{{ route('animals.show', $animal->id) }}">

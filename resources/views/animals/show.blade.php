@@ -6,7 +6,7 @@
 @endsection
 
 @section('content_header')
-    <h1>Animal {{ $animal->name }}</h1>
+    <h1>{{ $animal->name }}</h1>
 @stop
 
 @section('content')
@@ -19,11 +19,9 @@
                 <h2>Informações</h2>
 
                 <p> Nome: {{ $animal->name }} </p>
+                <p> Espécie: {{ $animal->specie->name }} </p>
                 <p> RG: {{ $animal->rg }} </p>
             </div>
         </div>
     </div>
 @stop
-
-@section('js')
-@endsection

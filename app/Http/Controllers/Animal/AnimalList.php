@@ -15,8 +15,8 @@ class AnimalList extends Controller
      */
     public function __invoke()
     {
-        $users = Animal::paginate($this->itemsPerPage);
+        $animals = Animal::paginate($this->itemsPerPage);
 
-        return AnimalResource::collection($users);
+        return AnimalResource::collection($animals);
     }
 }
