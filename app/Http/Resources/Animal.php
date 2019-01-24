@@ -17,6 +17,7 @@ class Animal extends JsonResource
         // return parent::toArray($request);
         return [
             'name' => $this->name,
+            'specie' => $this->specie,
             'rg' => $this->rg
         ];
     }
