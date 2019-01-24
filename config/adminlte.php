@@ -163,12 +163,12 @@ return [
             'submenu' => [
                 [
                     'text' => 'Cadastrar',
-                    'route'  => 'animals.create',
+                    'url'  => '#',
                 ],
                 [
                     'text' => 'Visualizar',
-                    'route'  => 'animals.index',
-                    'active' => ['animals'],
+                    'route'  => 'species.index',
+                    'active' => ['species'],
                 ],
             ],
         ],
