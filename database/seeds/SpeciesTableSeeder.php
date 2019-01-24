@@ -29,7 +29,7 @@ class SpeciesTableSeeder extends Seeder
         ]);
 
         Specie::create([
-            'name' => 'gato'
+            'name' => 'felino'
         ]);
 
         Specie::create([
