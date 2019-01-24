@@ -17,6 +17,8 @@ class CreateAnimalTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('rg')->unique();
+            $table->integer('specie')->unsigned();
+            $table->foreign('specie')->references('id')->on('species');
             $table->timestamps();
         });
     }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
+
 class Animal extends Model
 {
     use Notifiable;
@@ -15,7 +16,8 @@ class Animal extends Model
      */
     protected $fillable = [
         'name',
-        'rg'
+        'rg',
+        'specie'
     ];
 
     /**
