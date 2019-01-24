@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Animal;
+use App\Models\Specie;
 use Faker\Generator as Faker;
 
 /*
@@ -14,9 +14,8 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(Animal::class, function (Faker $faker) {
+$factory->define(Specie::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
-        'rg' => $faker->unique()->randomNumber($nbDigits = 6, $strict = true),
+        'name' => $faker->firstName,
     ];
 });
