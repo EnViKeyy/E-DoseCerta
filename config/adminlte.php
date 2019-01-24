@@ -163,7 +163,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Cadastrar',
-                    'url'  => '#',
+                    'route'  => 'species.create',
                 ],
                 [
                     'text' => 'Visualizar',
