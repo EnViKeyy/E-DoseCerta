@@ -30,20 +30,22 @@ $this->group(['middleware' => ['auth'], 'namespace' => 'Specie', 'prefix' => 'sp
 });
 
 // Animal routes
-$this->group(['middleware' => ['auth'], 'namespace' => 'Animal', 'prefix' => 'animals'],
-    function() {
-        //create
-        $this->get('/create', 'AnimalCreate')->name('animals.create');
-        $this->post('/', 'AnimalStore')->name('animals.store');
-        //update
-        $this->get('/{animal}/edit', 'AnimalEdit')->name('animals.edit');
-        $this->put('/{animal}', 'AnimalUpdate')->name('animals.update');
-        //read
-        $this->get('/list', 'AnimalIndex')->name('animals.index');
-        $this->get('/{animal}', 'AnimalShow')->name('animals.show');
-        //delete
-        $this->delete('/{animal}', 'AnimalDestroy')->name('animals.destroy');
-    });
+$this->group(['middleware' => ['auth'], 'namespace' => 'Animal', 'prefix' => 'animals'], function() {
+    //create
+    $this->get('/create', 'AnimalCreate')->name('animals.create');
+    $this->post('/', 'AnimalStore')->name('animals.store');
+
+    //update
+    $this->get('/{animal}/edit', 'AnimalEdit')->name('animals.edit');
+    $this->put('/{animal}', 'AnimalUpdate')->name('animals.update');
+
+    //read
+    $this->get('/list', 'AnimalIndex')->name('animals.index');
+    $this->get('/{animal}', 'AnimalShow')->name('animals.show');
+
+    //delete
+    $this->delete('/{animal}', 'AnimalDestroy')->name('animals.destroy');
+});
 
 Route::get('/', function () {
     return view('welcome');
