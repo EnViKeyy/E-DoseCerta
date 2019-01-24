@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Forms\Animal;
+namespace App\Forms\Specie;
 
 use App\Forms\Field;
 use Kris\LaravelFormBuilder\Form;
 
-class AnimalForm extends Form
+class SpecieForm extends Form
 {
     public function buildForm()
     {
@@ -13,10 +13,6 @@ class AnimalForm extends Form
             ->add('name', Field::TEXT, [
                 'label' => 'Nome',
                 'rules' => 'required|string'
-            ])
-            ->add('rg', Field::TEXT, [
-                'label' => 'Rg',
-                'rules' => 'required|unique:animals'
             ])
             ->add('submit', Field::BUTTON_SUBMIT, [
                 'label' => 'Salvar'
