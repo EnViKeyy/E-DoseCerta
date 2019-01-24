@@ -11,6 +11,24 @@
 |
 */
 
+// Specie routes
+$this->group(['middleware' => ['auth'], 'namespace' => 'Specie', 'prefix' => 'species'], function() {
+    //create
+    $this->get('/create', 'SpecieCreate')->name('species.create');
+    $this->post('/', 'SpecieStore')->name('species.store');
+
+    //update
+    $this->get('/{specie}/edit', 'SpecieEdit')->name('species.edit');
+    $this->put('/{specie}', 'SpecieUpdate')->name('species.update');
+
+    //read
+    $this->get('/list', 'SpecieIndex')->name('species.index');
+    $this->get('/{specie}', 'SpecieShow')->name('species.show');
+
+    //delete
+    $this->delete('/{specie}', 'SpecieDestroy')->name('species.destroy');
+});
+
 // Animal routes
 $this->group(['middleware' => ['auth'], 'namespace' => 'Animal', 'prefix' => 'animals'],
     function() {
