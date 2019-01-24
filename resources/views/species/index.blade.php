@@ -1,20 +1,20 @@
 @extends('adminlte::page')
 
-@section('title', 'Animals')
+@section('title', 'Espécies')
 
 @section('css')
 @endsection
 
 @section('content_header')
     @include('helpers.flash-message')
-    <h1>Animais</h1>
+    <h1>Espécies</h1>
 @stop
 
 @section('content')
     <div class="box">
         <div class="box-header with-border">
             <div class="pull-right">
-                <a class="btn btn-xs btn-primary" href="{{ route('animals.create') }}">Cadastrar Animal</a>
+                <a class="btn btn-xs btn-primary" href="{{ route('species.create') }}">Cadastrar Espécie</a>
             </div>
         </div>
         <!-- /.box-header -->
@@ -24,23 +24,21 @@
                     <tr>
                         <th class="text-center">#</th>
                         <th class="text-center">Nome</th>
-                        <th class="text-center">RG</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($animals as $animal)
+                    @foreach ($species as $specie)
                         <tr class="text-center">
-                            <td>{{ $animal->id }}</td>
-                            <td>{{ $animal->name }}</td>
-                            <td>{{ $animal->rg }}</td>
+                            <td>{{ $specie->id }}</td>
+                            <td>{{ $specie->name }}</td>
                             <td>
-                                <a class="btn btn-xs btn-primary" href="{{ route('animals.show', $animal->id) }}">
-                                    Visualizar Dosagens
+                                <a class="btn btn-xs btn-primary" href="{{ route('species.show', $specie->id) }}">
+                                    Visualizar
                                 </a>
-                                <a class="btn btn-xs btn-warning" href="{{ route('animals.edit', $animal->id) }}">
+                                <a class="btn btn-xs btn-warning" href="{{ route('species.edit', $specie->id) }}">
                                     Editar
                                 </a>
-                                <a class="btn btn-xs btn-danger assisted-destroy" data-id="{{ $animal->id }}">
+                                <a class="btn btn-xs btn-danger assisted-destroy" data-id="{{ $specie->id }}">
                                     Excluir
                                 </a>
                             </td>
@@ -51,7 +49,7 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer clearfix text-center">
-            {{ $animals->links() }}
+            {{ $species->links() }}
         </div>
     </div>
 @stop
@@ -60,9 +58,9 @@
     <script src="//unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
         $('.assisted-destroy').on('click', function () {
-            var animalId = $(this).data('id');
+            var specieId = $(this).data('id');
 
-            swal("Tem certeza que deseja excluir esse animal?", {
+            swal("Tem certeza que deseja excluir essa espécie?", {
                 buttons: {
                     cancel: "Cancelar",
                     catch: {
@@ -75,14 +73,14 @@
                 switch (value) {
                     case "confirm":
                         $.ajax({
-                            url: '{{ route('animals.destroy', '_animal') }}'.replace('_animal', animalId),
+                            url: '{{ route('species.destroy', '_especie') }}'.replace('_especie', specieId),
                             method: 'DELETE',
                             success: function (xhr) {
-                                swal("Sucesso!", "Animal deletado", "success");
+                                swal("Sucesso!", "Espécie deletada", "success");
                                 window.location.reload();
                             },
                             error: function (xhr) {
-                                swal("Falha!", "Animal não pôde ser excluído", "error");
+                                swal("Falha!", "Espécie não pôde ser excluído", "error");
                             }
                         });
                         break;

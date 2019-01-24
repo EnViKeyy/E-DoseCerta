@@ -14,11 +14,6 @@
                     {!! form_label($form->name) !!}
                     {!! form_widget($form->name) !!}
                 </div>
-
-                <div class="form-group">
-                    {!! form_label($form->rg) !!}
-                    {!! form_widget($form->rg) !!}
-                </div>
             </div>
         </div>
 

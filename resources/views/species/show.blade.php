@@ -1,12 +1,12 @@
 @extends('adminlte::page')
 
-@section('title', 'Visualizar Animal')
+@section('title', 'Visualizar Espécie')
 
 @section('css')
 @endsection
 
 @section('content_header')
-    <h1>Animal {{ $animal->name }}</h1>
+    <h1>{{ $specie->name }}</h1>
 @stop
 
 @section('content')
@@ -18,8 +18,7 @@
             <div class="col-md-6">
                 <h2>Informações</h2>
 
-                <p> Nome: {{ $animal->name }} </p>
-                <p> RG: {{ $animal->rg }} </p>
+                <p> Nome: {{ $specie->name }} </p>
             </div>
         </div>
     </div>
