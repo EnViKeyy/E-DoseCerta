@@ -29,6 +29,24 @@ $this->group(['middleware' => ['auth'], 'namespace' => 'Specie', 'prefix' => 'sp
     $this->delete('/{specie}', 'SpecieDestroy')->name('species.destroy');
 });
 
+// Medicine routes
+$this->group(['middleware' => ['auth'], 'namespace' => 'Medicine', 'prefix' => 'medicines'], function() {
+    //create
+    $this->get('/create', 'MedicineCreate')->name('medicines.create');
+    $this->post('/', 'MedicineStore')->name('medicines.store');
+
+    //update
+    $this->get('/{medicine}/edit', 'MedicineEdit')->name('medicines.edit');
+    $this->put('/{medicine}', 'MedicineUpdate')->name('medicines.update');
+
+    //read
+    $this->get('/list', 'MedicineIndex')->name('medicines.index');
+    $this->get('/{medicine}', 'MedicineShow')->name('medicines.show');
+
+    //delete
+    $this->delete('/{medicine}', 'MedicineDestroy')->name('medicines.destroy');
+});
+
 // Animal routes
 $this->group(['middleware' => ['auth'], 'namespace' => 'Animal', 'prefix' => 'animals'], function() {
     //create
