@@ -1,25 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Animal;
+namespace App\Http\Controllers\Medicine;
 
 use App\Http\Controllers\Controller;
-use App\Models\Animal;
-use App\Http\Resources\Animal as AnimalResource;
-use App\Models\Specie;
-use Illuminate\Http\JsonResponse;
+use App\Models\Medicine;
 
-class AnimalShow extends Controller
+class MedicineShow extends Controller
 {
     /**
-     * @param Animal $animal
-     * @return AnimalResource|JsonResponse
+     * @param Medicine $medicine
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function __invoke(Animal $animal)
+    public function __invoke(Medicine $medicine)
     {
-        $animal->specie = Specie::findOrFail($animal->specie);
-
-        return view('animals.show', [
-            'animal' => $animal
+        return view('medicines.show', [
+            'medicine' => $medicine
         ]);
     }
 }

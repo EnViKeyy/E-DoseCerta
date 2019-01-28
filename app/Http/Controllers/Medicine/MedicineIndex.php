@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Animal;
+namespace App\Http\Controllers\Medicine;
 
 use App\Http\Controllers\Controller;
-use App\Models\Animal;
-use App\Models\Specie;
+use App\Models\Medicine;
 use Illuminate\Http\Request;
 
-class AnimalIndex extends Controller
+class MedicineIndex extends Controller
 {
     private $itemsPerPage = 10;
 
@@ -19,14 +18,10 @@ class AnimalIndex extends Controller
     {
         $perPage = $request->query->get('perPage', $this->itemsPerPage);
 
-        $animals = Animal::paginate($perPage);
+        $medicines = Medicine::paginate($perPage);
 
-        foreach ($animals as $animal) {
-            $animal->specie = Specie::findOrFail($animal->specie);
-        }
-
-        return view('animals.index', [
-            'animals' => $animals
+        return view('medicines.index', [
+            'medicines' => $medicines
         ]);
     }
 }

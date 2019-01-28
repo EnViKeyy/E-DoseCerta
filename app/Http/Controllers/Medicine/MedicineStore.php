@@ -1,32 +1,31 @@
 <?php
 
-namespace App\Http\Controllers\Specie;
+namespace App\Http\Controllers\Medicine;
 
 use App\Http\Controllers\Controller;
-use App\Models\Specie;
+use App\Models\Medicine;
 use Illuminate\Http\Request;
 
-class SpecieStore extends Controller
+class MedicineStore extends Controller
 {
     /**
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
-     * @throws \Throwable
      */
     public function __invoke(Request $request)
     {
-        $specie = new Specie($request->all());
+        $medicine = new Medicine($request->all());
 
         try {
-            $specie->save();
+            $medicine->save();
 
             return redirect()
-                ->route('species.index')
-                ->with('alert-success', 'Espécie cadastrada com sucesso!');
+                ->route('medicines.index')
+                ->with('alert-success', 'Fármaco cadastrado com sucesso!');
         } catch (\Exception $e) {
             return redirect()
                 ->back()
-                ->with('alert-danger', 'Falha no cadastro da espécie!' . $e->getMessage());
+                ->with('alert-danger', 'Falha no cadastro do fármaco!' . $e->getMessage());
         }
     }
 }

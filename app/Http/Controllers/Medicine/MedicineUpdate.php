@@ -1,32 +1,32 @@
 <?php
 
-namespace App\Http\Controllers\Animal;
+namespace App\Http\Controllers\Medicine;
 
 use App\Http\Controllers\Controller;
-use App\Models\Animal;
+use App\Models\Medicine;
 use Illuminate\Http\Request;
 
-class AnimalUpdate extends Controller
+class MedicineUpdate extends Controller
 {
     /**
      * @param Request $request
-     * @param Animal $animal
+     * @param Medicine $medicine
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function __invoke(Request $request, Animal $animal)
+    public function __invoke(Request $request, Medicine $medicine)
     {
-        $animal->update($request->all());
+        $medicine->update($request->all());
 
         try {
-            $animal->save();
+            $medicine->save();
 
             return redirect()
-                ->route('animals.index')
-                ->with('alert-success', 'Dados do animal atualizado com sucesso!');
+                ->route('medicines.index')
+                ->with('alert-success', 'Dados do fármaco atualizado com sucesso!');
         } catch (\Exception $e) {
             return redirect()
                 ->back()
-                ->with('alert-danger', 'Falha na atualização dos dados do Animal!');
+                ->with('alert-danger', 'Falha na atualização dos dados do fármaco!');
         }
     }
 }

@@ -1,23 +1,23 @@
 <?php
 
-namespace App\Http\Controllers\Specie;
+namespace App\Http\Controllers\Medicine;
 
-use App\Forms\Specie\SpecieForm;
+use App\Forms\Medicine\MedicineForm;
 use App\Http\Controllers\Controller;
 
-class SpecieCreate extends Controller
+class MedicineCreate extends Controller
 {
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function __invoke()
     {
-        $form = $this->formBuilder->create(SpecieForm::class, [
-            'url' => route('species.store'),
+        $form = $this->formBuilder->create(MedicineForm::class, [
+            'url' => route('medicines.store'),
             'method' => 'POST'
         ]);
 
-        return view('species.create', [
+        return view('medicines.create', [
             'form' => $form
         ]);
     }
