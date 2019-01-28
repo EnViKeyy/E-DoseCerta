@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Animal extends JsonResource
+class Medicine extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,8 +17,7 @@ class Animal extends JsonResource
         // return parent::toArray($request);
         return [
             'name' => $this->name,
-            'specie' => $this->specie,
-            'rg' => $this->rg
+            'concentratio' => $this->concentratio
         ];
     }
 
