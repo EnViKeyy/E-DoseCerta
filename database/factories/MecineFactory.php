@@ -16,7 +16,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Medicine::class, function (Faker $faker) {
     return [
-        'name' => $faker->firstName,
+        'name' => $faker->lastName,
         'concentration' => $faker->randomFloat(),
     ];
 });
