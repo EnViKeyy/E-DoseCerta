@@ -4,15 +4,13 @@ namespace App\Http\Controllers\Animal;
 
 use App\Http\Controllers\Controller;
 use App\Models\Animal;
-use App\Http\Resources\Animal as AnimalResource;
 use App\Models\Specie;
-use Illuminate\Http\JsonResponse;
 
 class AnimalShow extends Controller
 {
     /**
      * @param Animal $animal
-     * @return AnimalResource|JsonResponse
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function __invoke(Animal $animal)
     {
