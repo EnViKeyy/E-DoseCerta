@@ -1,20 +1,20 @@
 @extends('adminlte::page')
 
-@section('title', 'Espécies')
+@section('title', 'Fármacos')
 
 @section('css')
 @endsection
 
 @section('content_header')
     @include('helpers.flash-message')
-    <h1>Espécies</h1>
+    <h1>Fármacos</h1>
 @stop
 
 @section('content')
     <div class="box">
         <div class="box-header with-border">
             <div class="pull-right">
-                <a class="btn btn-xs btn-primary" href="{{ route('species.create') }}">Cadastrar Espécie</a>
+                <a class="btn btn-xs btn-primary" href="{{ route('medicines.create') }}">Cadastrar Fármaco</a>
             </div>
         </div>
         <!-- /.box-header -->
@@ -24,21 +24,24 @@
                     <tr>
                         <th class="text-center">#</th>
                         <th class="text-center">Nome</th>
+                        <th class="text-center">Concentração</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($species as $specie)
+                    @foreach ($medicines as $medicine)
                         <tr class="text-center">
-                            <td>{{ $specie->id }}</td>
-                            <td>{{ $specie->name }}</td>
+                            <td>{{ $medicine->id }}</td>
+                            <td>{{ $medicine->name }}</td>
+                            <td>{{ $medicine->concentration }}</td>
+
                             <td>
-                                <a class="btn btn-xs btn-primary" href="{{ route('species.show', $specie->id) }}">
+                                <a class="btn btn-xs btn-primary" href="{{ route('medicines.show', $medicine->id) }}">
                                     Visualizar
                                 </a>
-                                <a class="btn btn-xs btn-warning" href="{{ route('species.edit', $specie->id) }}">
+                                <a class="btn btn-xs btn-warning" href="{{ route('medicines.edit', $medicine->id) }}">
                                     Editar
                                 </a>
-                                <a class="btn btn-xs btn-danger assisted-destroy" data-id="{{ $specie->id }}">
+                                <a class="btn btn-xs btn-danger medicine-destroy" data-id="{{ $medicine->id }}">
                                     Excluir
                                 </a>
                             </td>
@@ -49,7 +52,7 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer clearfix text-center">
-            {{ $species->links() }}
+            {{ $medicines->links() }}
         </div>
     </div>
 @stop
@@ -57,10 +60,10 @@
 @section('js')
     <script src="//unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
-        $('.assisted-destroy').on('click', function () {
-            var specieId = $(this).data('id');
+        $('.medicine-destroy').on('click', function () {
+            var medicineId = $(this).data('id');
 
-            swal("Tem certeza que deseja excluir essa espécie?", {
+            swal("Tem certeza que deseja excluir esse fármaco?", {
                 buttons: {
                     cancel: "Cancelar",
                     catch: {
@@ -73,14 +76,14 @@
                 switch (value) {
                     case "confirm":
                         $.ajax({
-                            url: '{{ route('species.destroy', '_especie') }}'.replace('_especie', specieId),
+                            url: '{{ route('medicines.destroy', '_medicine') }}'.replace('_medicine', medicineId),
                             method: 'DELETE',
                             success: function (xhr) {
-                                swal("Sucesso!", "Espécie deletada", "success");
+                                swal("Sucesso!", "Fármaco deletado", "success");
                                 window.location.reload();
                             },
                             error: function (xhr) {
-                                swal("Falha!", "Espécie não pôde ser excluído", "error");
+                                swal("Falha!", "Fármaco não pôde ser excluído", "error");
                             }
                         });
                         break;

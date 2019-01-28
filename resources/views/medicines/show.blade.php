@@ -1,12 +1,12 @@
 @extends('adminlte::page')
 
-@section('title', 'Visualizar Animal')
+@section('title', 'Visualizar Fármaco')
 
 @section('css')
 @endsection
 
 @section('content_header')
-    <h1>{{ $animal->name }}</h1>
+    <h1>Informações</h1>
 @stop
 
 @section('content')
@@ -16,11 +16,9 @@
         <!-- /.box-header -->
         <div class="box-body">
             <div class="col-md-6">
-                <h2>Informações</h2>
+                <h2>{{ $medicine->name }}</h2>
 
-                <p> Nome: {{ $animal->name }} </p>
-                <p> Espécie: {{ $animal->specie->name }} </p>
-                <p> RG: {{ $animal->rg }} </p>
+                <p> Concentração: {{ $medicine->concentration }} </p>
             </div>
         </div>
     </div>

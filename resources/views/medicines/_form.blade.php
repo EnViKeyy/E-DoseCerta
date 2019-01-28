@@ -16,13 +16,8 @@
                 </div>
 
                 <div class="form-group">
-                    {!! form_label($form->specie) !!}
-                    {!! form_widget($form->specie) !!}
-                </div>
-
-                <div class="form-group">
-                    {!! form_label($form->rg) !!}
-                    {!! form_widget($form->rg) !!}
+                    {!! form_label($form->concentration) !!}
+                    {!! form_widget($form->concentration) !!}
                 </div>
             </div>
         </div>

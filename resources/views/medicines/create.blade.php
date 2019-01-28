@@ -1,17 +1,17 @@
 @extends('adminlte::page')
 
-@section('title', 'Cadastrar novo animal')
+@section('title', 'Cadastrar Novo Fármaco')
 
 @section('css')
 @endsection
 
 @section('content_header')
     @include('helpers.flash-message')
-    <h1>Cadastrar novo animal</h1>
+    <h1>Cadastrar novo fármaco</h1>
 @stop
 
 @section('content')
-    @include('animals._form', [
+    @include('medicines._form', [
         'form' => $form
     ])
 @stop
