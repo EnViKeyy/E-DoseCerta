@@ -149,11 +149,12 @@ return [
             'submenu' => [
                 [
                     'text' => 'Cadastrar',
-                    'url'  => '#',
+                    'route'  => 'medicines.create',
                 ],
                 [
                     'text' => 'Visualizar',
-                    'url'  => '#',
+                    'route'  => 'medicines.index',
+                    'active' => ['medicines'],
                 ],
             ],
         ],
