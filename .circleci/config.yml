@@ -8,11 +8,6 @@ jobs:
     docker:
       # Specify the version you desire here
       - image: circleci/php:7.2-node-browsers-legacy
-        environment:
-          - MYSQL_USER=root
-          - MYSQL_PASSWORD=
-          - MYSQL_ALLOW_EMPTY_PASSWORD=true
-          - MYSQL_DATABASE=circle_test
 
     # Specify service dependencies here if necessary
     # CircleCI maintains a library of pre-built images
@@ -27,12 +22,10 @@ jobs:
 
     steps:
       - checkout
-      - run: sudo apt update && sudo apt install -y libsqlite3-dev zlib1g-dev
-      - run: sudo docker-php-ext-install pdo_mysql
+      - run: sudo apt update && sudo apt install zlib1g-dev libsqlite3-dev
+      - run: sudo docker-php-ext-install zip
       - run: composer install -n --prefer-dist
       - run: cp .env.dev .env
 
       # run tests!
-      - run:
-          name: Run Unit tests
-          command: vendor/bin/phpunit
+      - run: /vendor/bin/phpunit
