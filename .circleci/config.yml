@@ -1,41 +1,31 @@
-version: 2 # use CircleCI 2.0
-
-jobs: # a collection of steps
-  build: # runs not using Workflows must have a `build` job as entry point
+# PHP CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-php/ for more details
+#
+version: 2
+jobs:
+  build:
     docker:
+      # Specify the version you desire here
       - image: circleci/php:7.2-node-browsers-legacy
-      - image: tkuchiki/delayed-mysql
-        environment:
-          MYSQL_ALLOW_EMPTY_PASSWORD: yes
-          MYSQL_ROOT_PASSWORD: ''
-          MYSQL_DATABASE: circleci
-    working_directory: ~/e-dosecerta # directory where steps will run
-    steps: # a set of executable commands
-      - checkout # special step to check out source code to working directory
-      - run: sudo apt install -y libsqlite3-dev zlib1g-dev
+
+    # Specify service dependencies here if necessary
+    # CircleCI maintains a library of pre-built images
+    # documented at https://circleci.com/docs/2.0/circleci-images/
+    # Using the RAM variation mitigates I/O contention
+    # for database intensive operations.
+    # - image: circleci/mysql:5.7-ram
+    #
+    # - image: redis:2.8.19
+
+    working_directory: ~/edef-pr
+
+    steps:
+      - checkout
+      - run: sudo apt update && sudo apt install zlib1g-dev libsqlite3-dev
       - run: sudo docker-php-ext-install zip
-      - run: sudo composer self-update
-      - restore_cache: # special step to restore the dependency cache if `composer.lock` does not change
-          keys:
-            - composer-v1-{{ checksum "composer.lock" }}
-            # fallback to using the latest cache if no exact match is found (See https://circleci.com/docs/2.0/caching/)
-            - composer-v1-
       - run: composer install -n --prefer-dist
-      - save_cache: # special step to save the dependency cache with the `composer.lock` cache key template
-          key: composer-v1-{{ checksum "composer.lock" }}
-          paths:
-            - vendor
-      - restore_cache: # special step to restore the dependency cache if `package.json` does not change
-          keys:
-            - node-v1-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found (See https://circleci.com/docs/2.0/caching/)
-            - node-v1-
-      - run: yarn install
-      - save_cache: # special step to save the dependency cache with the `package.json` cache key template
-          key: node-v1-{{ checksum "package.json" }}
-          paths:
-            - node_modules
-      - run: touch storage/testing.sqlite
-      - run: php artisan migrate --env=testing --database=sqlite_testing --force
+      - run: cp .env.dev .env
+
+      # run tests!
       - run: ./vendor/bin/phpunit
-      # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples    
