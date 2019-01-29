@@ -28,4 +28,6 @@ jobs:
       - run: cp .env.dev .env
 
       # run tests!
-      - run: ./vendor/bin/phpunit
+      - run:
+          name: Run Unit tests
+          command: vendor/bin/phpunit
