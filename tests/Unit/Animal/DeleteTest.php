@@ -19,7 +19,7 @@ class DeleteTest extends TestCase
 
 
     /**
-     * A basic test example.
+     * @test Delete a specific animal
      *
      * @return void
      */

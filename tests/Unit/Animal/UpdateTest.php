@@ -19,7 +19,7 @@ class UpdateTest extends TestCase
 
 
     /**
-     * A basic test example.
+     * @test Update a specific animal
      *
      * @return void
      */

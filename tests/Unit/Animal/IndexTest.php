@@ -19,7 +19,7 @@ class IndexTest extends TestCase
 
 
     /**
-     * A basic test example.
+     * @test Get all assisteds paginated
      *
      * @return void
      */

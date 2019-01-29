@@ -18,7 +18,7 @@ class StoreTest extends TestCase
 
 
     /**
-     * A basic test example.
+     * @test Store a specific animal
      *
      * @return void
      */

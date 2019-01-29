@@ -19,7 +19,7 @@ class ShowTest extends TestCase
 
 
     /**
-     * A basic test example.
+     * @test Get a specific animal
      *
      * @return void
      */
