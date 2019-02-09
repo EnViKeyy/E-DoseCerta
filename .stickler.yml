@@ -1,6 +1,8 @@
 linters:
   phpcs:
     standard: PSR2
+    exclude: 'Generic.Files.LineLength,PSR2.Files.EndFileNewline'
+    tab_width: 4
     fixer: true
 files:
   ignore:
