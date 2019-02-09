@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use App\Models\User;
+use App\Models\Specie;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -26,12 +27,14 @@ class StoreTest extends TestCase
     {
         $user = factory(User::class)->create();
 
+        $specie = factory(Specie::class)->create();
+
         $this->be($user);
 
         $animal = [
             'name' => 'test',
             'rg' => '000',
-            'specie' => '0'
+            'specie' => $specie->id
         ];
 
         $this->post(route('animals.store', $animal));
@@ -39,7 +42,7 @@ class StoreTest extends TestCase
         $this->assertDatabaseHas('animals', [
             'name' => 'test',
             'rg' => '000',
-            'specie' => '0'
+            'specie' => $specie->id
         ]);
     }
 }
